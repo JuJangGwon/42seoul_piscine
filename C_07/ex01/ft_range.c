@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jju <jju@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 11:07:45 by jju               #+#    #+#             */
-/*   Updated: 2022/02/21 18:53:57 by jju              ###   ########.fr       */
+/*   Created: 2022/02/21 15:26:14 by jju               #+#    #+#             */
+/*   Updated: 2022/02/21 15:42:07 by jju              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdlib.h>
 
-char	*ft_strstr(char *str, char *to_find)
+int		*ft_range(int min, int max)
 {
-	int	len;
-	int	i;
-	int	j;
+	int		count;
+	int		*tab;
 
-	len = 0;
-	while (to_find[len])
-		len++;
-	if (len == 0)
-		return (str);
-	i = 0;
-	while (str[i])
+	count = 0;
+	if (min >= max)
+		return (0);
+	if (! (tab = (int *)malloc((max - min) * sizeof(int))))
+		return (0);
+	while (count < max - min)
 	{
-		j = 0;
-		while (to_find[j] == str[i + j])
-		{
-			if (j + 1 == len)
-				return (str + i);
-			j++;
-		}
-		i++;
+		tab[count] = min + count;
+		count++;
 	}
-	return (NULL);
+	return (tab);
 }

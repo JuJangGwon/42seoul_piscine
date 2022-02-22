@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jju <jju@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 11:07:45 by jju               #+#    #+#             */
-/*   Updated: 2022/02/21 18:53:57 by jju              ###   ########.fr       */
+/*   Created: 2022/02/14 12:38:08 by jju               #+#    #+#             */
+/*   Updated: 2022/02/16 10:22:08 by jju              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-char	*ft_strstr(char *str, char *to_find)
+int	ft_iterative_factorial(int nb)
 {
-	int	len;
 	int	i;
-	int	j;
+	int	sum;
 
-	len = 0;
-	while (to_find[len])
-		len++;
-	if (len == 0)
-		return (str);
-	i = 0;
-	while (str[i])
-	{
-		j = 0;
-		while (to_find[j] == str[i + j])
-		{
-			if (j + 1 == len)
-				return (str + i);
-			j++;
-		}
-		i++;
-	}
-	return (NULL);
+	sum = 1;
+	i = 1;
+	if (nb < 0)
+		return (0);
+	if (nb == 0)
+		return (1);
+	while (nb + 1 != i)
+		sum = sum * i++;
+	return (sum);
 }
